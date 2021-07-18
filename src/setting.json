@@ -1,0 +1,21 @@
+{
+    "panel": {
+        "token": "ODYxMzM0MTU4NTQ2MDQyODgw.YOIR8g.hpDZveA5pD-Itmey3gsR5-HCZpw",
+        "prefix": "+",
+        "mongopath": "mongodb+srv://Niyuki:NiyukiOnFire@cluster0.bjgbr.mongodb.net/ticket?retryWrites=true&w=majority",
+        "language": "",
+        "owner": "730448609790787585"
+    },
+    "channellist": {
+        "CommandLog": "853370118724780092",
+        "voicechannel": "854008076087590923",
+        "createticketchannel": "864443778613379082",
+        "ticketlogchannel": "864443801884033065",
+        "ticketcategory": "864742681199771658"
+    },
+    "rolelist": {
+        "openticket": "864444078116831252",
+        "ticketauthorized": "864444116838383626"
+    }
+
+}
