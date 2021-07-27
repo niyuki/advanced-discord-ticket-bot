@@ -2,7 +2,7 @@
     "panel": {
         "token": "ODYxMzM0MTU4NTQ2MDQyODgw.YOIR8g.hpDZveA5pD-Itmey3gsR5-HCZpw",
         "prefix": "+",
-        "mongopath": "mongodb+srv://Niyuki:NiyukiOnFire@cluster0.bjgbr.mongodb.net/ticket?retryWrites=true&w=majority",
+        "mongopath": "mongopath",
         "language": "",
         "owner": "730448609790787585"
     },
