@@ -20,7 +20,7 @@ client.on('clickMenu', async(menu) => {
         await menu.reply.defer()
         await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: User did not pay attention to the ticket`, message))
         Reason = "User did not pay attention to the ticket"
-        setTiim
+        
       }
     
       if(menu.values[0] === 'r4') {
