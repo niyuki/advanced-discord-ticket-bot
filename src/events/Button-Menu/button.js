@@ -1,6 +1,8 @@
 const client = require('../../niyuki');
 const config = require('../../setting.json')
 const { MessageMenuOption, MessageMenu, MessageActionRow } = require('discord-buttons')
+const Discord = require('discord.js')
+const schema = require('../../schema.js')
 
 client.on('clickButton', async (button) => {
     const select1 = new MessageMenuOption()
