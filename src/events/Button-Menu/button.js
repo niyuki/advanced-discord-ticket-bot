@@ -57,7 +57,7 @@ client.on('clickButton', async (button) => {
         x.save()
         .catch(err => console.log(err))
         await schema.findOneAndDelete({ User: button.channel.name, OpenedTicketChannel: button.channel.id })
-        let blacklistadded = new Discord.MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('This Warning Is Gonna Be Deleted After 15 Seconds!').addField('User Has Been Blacklisted | Channel is going to be deleted in 10 seconds',` ${Blacklistuser.user.tag} I Hope You Regret Whatever You Have Done XD`);
+        let blacklistadded = new Discord.MessageEmbed().setAuthor(button.clicker.member.displayName, button.clicker.member.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('This Warning Is Gonna Be Deleted After 15 Seconds!').addField('User Has Been Blacklisted | Channel is going to be deleted in 10 seconds',` ${button.clicker.member.tag} I Hope You Regret Whatever You Have Done XD`);
         (await button.channel.send(blacklistadded)).then(x => x.delete({timeout: 15000}))
         setTimeout(() => {
             button.channel.delete()
