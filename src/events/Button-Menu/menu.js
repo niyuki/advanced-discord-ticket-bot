@@ -1,24 +1,25 @@
 const client = require('../../niyuki');
 const config = require('../../setting.json')
+const { MessageEmbed } = require('discord.js')
 
 client.on('clickMenu', async(menu) => {
     let Reason = ""
       if(!menu.clicker.roles.cache.get(config.rolelist.ticketauthorized)) return
       if(menu.values[0] === 'r1') {
         await menu.reply.defer({ ephemeral: true })
-        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: Topic is solved`, message))
+        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: Topic is solved`))
         Reason = "Topic is solved"
       }
     
       if(menu.values[0] === 'r2') {
         await menu.reply.defer({ ephemeral: true })
-        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: Ticket was not able to be solved`, message))
+        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: Ticket was not able to be solved`))
         Reason = "Ticket was not able to be solved"
       }
     
       if(menu.values[0] === 'r3') {
         await menu.reply.defer()
-        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: User did not pay attention to the ticket`, message))
+        await menu.channel.send('@everyone'+await client.translate(`Ticket is closing soon.. Reason is: User did not pay attention to the ticket`))
         Reason = "User did not pay attention to the ticket"
         
       }
@@ -31,8 +32,8 @@ client.on('clickMenu', async(menu) => {
       setTimeout(() => {
         menu.channel.delete()
     }, 15000)    
-      message.author.send(await client.translate(`Ticket Closed. Reach ${menu.clicker} for more details - \`ID: ${menu.clicker.id}\` \`Reason: ${Reason}\` `, message))
-      let x= client.users.cache.find(x => x.id === menu.channel.name)
-      client.channels.cache.get(config.channellist.ticketlogchannel).send(new Discord.MessageEmbed().setAuthor(x.displayName, x.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('Niyuki was Alone!').setTitle('Ticket Log').setDescription(`Ticket of ${x}-(${x.id}) has succesfully closed the ticket by ${menu.clicker} \n \`Reason: ${Reason}\` \n Head over to <#${config.channellist.createticketchannel}> to create a new ticket!`))
+          let x= client.users.cache.find(x => x.id === menu.channel.name)
+      x.send(await client.translate(`Ticket Closed. Reach ${menu.clicker} for more details - \`ID: ${menu.clicker.id}\` \`Reason: ${Reason}\` `,))
+      client.channels.cache.get(config.channellist.ticketlogchannel).send(new MessageEmbed().setAuthor(x.displayName, x.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('Niyuki was Alone!').setTitle('Ticket Log').setDescription(`Ticket of ${x}-(${x.id}) has succesfully closed the ticket by ${menu.clicker} \n \`Reason: ${Reason}\` \n Head over to <#${config.channellist.createticketchannel}> to create a new ticket!`))
 
     })
