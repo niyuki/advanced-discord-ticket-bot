@@ -1,6 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const config = require('../../setting.json')
-
+const schema = require('../../schema')
+const Discord = require('discord.js')
 
 module.exports = {
     name: 'close',
@@ -14,7 +15,7 @@ module.exports = {
     run: async(client, message, args) => {
         let categories = config.channellist.ticketcategory;
 
-        if(!categories.includes(message.channel.id)) return message.reply('❌ | Only in ticket category!').then(x => x.delete({timeout: 5000}))
+        if(!categories.includes(message.channel.parentID)) return message.reply('❌ | Only in ticket category!').then(x => x.delete({timeout: 5000}))
         if(message.channel.name !== message.author.id) return message.reply('❌ | Only ticket owner can use this!').then(x => x.delete({timeout: 5000}))
         await schema.findOneAndDelete({ User: message.author.id })
         button.channel.send(`@everyone | Channel is going to be deleted in 10 seconds..`)
