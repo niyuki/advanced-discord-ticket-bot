@@ -1,6 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const config = require('../../setting.json')
-
+const schema = require('../../schema')
+const Discord = require('discord.js')
 
 module.exports = {
     name: 'forceclose',
