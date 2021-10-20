@@ -29,7 +29,7 @@ client.on('clickButton', async (button) => {
 
     const OMG = new MessageMenu()
     .setID(`niyukiispog`)
-    .setPlaceholder(await client.translate(`Choose one reason or i will stab you and haunt you 👻`, message))
+    .setPlaceholder(await client.translate(`Choose one reason or i will stab you and haunt you 👻`))
     .addOption(select1)
     .addOption(select2)
     .addOption(select3)
