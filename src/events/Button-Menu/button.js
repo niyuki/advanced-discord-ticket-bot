@@ -4,6 +4,7 @@ const { MessageMenuOption, MessageMenu, MessageActionRow } = require('discord-bu
 const Discord = require('discord.js')
 const schema = require('../../schema.js')
 
+
 client.on('clickButton', async (button) => {
     const select1 = new MessageMenuOption()
       .setLabel(`Reason 1`)
@@ -55,16 +56,16 @@ client.on('clickButton', async (button) => {
     } else if(button.id == "blacklist") {
         const blacklist = require('../../models/blacklist')
         if(!button.clicker.member.roles.cache.get(config.rolelist.ticketauthorized)) return
-        x = new blacklist({id : button.channel.name })
-        x.save()
+        const y = new blacklist({id : button.channel.name })
+        y.save()
         .catch(err => console.log(err))
+              let x= client.users.cache.find(z => z.id === button.channel.name)  
         await schema.findOneAndDelete({ User: button.channel.name, OpenedTicketChannel: button.channel.id })
-        let blacklistadded = new Discord.MessageEmbed().setAuthor(button.clicker.member.displayName, button.clicker.member.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('This Warning Is Gonna Be Deleted After 15 Seconds!').addField('User Has Been Blacklisted | Channel is going to be deleted in 10 seconds',` ${button.clicker.member.tag} I Hope You Regret Whatever You Have Done XD`);
-        (await button.channel.send(blacklistadded)).then(x => x.delete({timeout: 15000}))
+        let blacklistadded = new Discord.MessageEmbed().setAuthor(x.displayName, x.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('This Warning Is Gonna Be Deleted After 15 Seconds!').addField('User Has Been Blacklisted | Channel is going to be deleted in 10 seconds',` ${x.tag} I Hope You Regret Whatever You Have Done XD`);
+        (await button.channel.send(blacklistadded))
         setTimeout(() => {
             button.channel.delete()
         }, 10000)      
-        let x= client.users.cache.find(x => x.id === button.channel.name)  
         client.channels.cache.get(config.channellist.ticketlogchannel).send(new Discord.MessageEmbed().setAuthor(x.displayName, x.avatarURL({dynamic: true})).setColor("#55ff76").setTimestamp().setFooter('Niyuki was Alone!').setTitle('Ticket Log').setDescription(`Ticket of ${x}-(${x.id}) has succesfully been blacklisted by ${button.clicker.member}.. \n \`This user will not be able to use any commands again until an authorized removes that user!\``))
 
     }
