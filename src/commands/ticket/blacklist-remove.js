@@ -1,6 +1,7 @@
 const blacklist = require('../../models/blacklist')
 const { Message } = require('discord.js')
 const Discord = require('discord.js')
+const config = require('../../setting.json')
 
 module.exports = {
     name : 'blacklist-remove',
